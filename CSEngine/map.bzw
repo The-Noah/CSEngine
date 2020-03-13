@@ -1,0 +1,8 @@
+﻿world
+ name Simple World
+ size 100.0
+end
+box
+ position 0 0 0
+ size 10 10 20
+end
