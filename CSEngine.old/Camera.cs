@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Numerics;
 
-using GLFW;
+using glfw3;
 using OpenGL;
 
 namespace TheNoah.CSEngine{
@@ -35,15 +35,15 @@ namespace TheNoah.CSEngine{
       }else if(Input.GetKey(Input.right)){
         position += right * velocity;
       }
-      if(MyWindow.Singleton.GetKey(Keys.Space)){
+      if(Window.Singleton.GetKey(Key.Space)){
         position -= up * velocity;
-      }else if(MyWindow.Singleton.GetKey(Keys.LeftShift)){
+      }else if(Window.Singleton.GetKey(Key.LeftShift)){
         position += up * velocity;
       }
 
       double x = 0;
       double y = 0;
-      MyWindow.Singleton.GetCursorDelta(ref x, ref y);
+      Window.Singleton.GetCursorDelta(ref x, ref y);
 
       float sensitivity = .05f;
       yaw += x * sensitivity;

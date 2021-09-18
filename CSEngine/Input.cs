@@ -1,14 +1,14 @@
-﻿using glfw3;
+﻿using GLFW;
 
 namespace TheNoah.CSEngine{
   public static class Input{
-    public const Key forward = Key.W;
-    public const Key backward = Key.S;
-    public const Key left = Key.A;
-    public const Key right = Key.D;
+    public const Keys forward = Keys.W;
+    public const Keys backward = Keys.S;
+    public const Keys left = Keys.A;
+    public const Keys right = Keys.D;
 
-    public static bool GetKey(Key key){
-      return Window.Singleton.GetKey(key);
+    public static bool GetKey(Keys key){
+      return MyWindow.Singleton.GetKey(key);
     }
   }
 }

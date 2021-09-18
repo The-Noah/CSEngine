@@ -1,16 +1,16 @@
-﻿// Vercidium is the best. Not possible without him!
+﻿// Vercidium is the best. Not possible with him!
 
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Numerics;
-using GLFW;
+using glfw3;
 using OpenGL;
 
 namespace TheNoah.CSEngine{
   public class CSEngine{
-    private MyWindow window;
+    private Window window;
 
     private bool wireframe;
     private uint ScreenshotNumber = 0;
@@ -19,8 +19,7 @@ namespace TheNoah.CSEngine{
     private Scene scene = new Scene();
 
     public CSEngine(){
-      Console.WriteLine("Hello, World!");
-      window = new MyWindow(800, 600, "CSEngine");
+      window = new Window(800, 600, "CSEngine");
       window.keyCallback += KeyPress;
 
       Init();
@@ -94,23 +93,23 @@ namespace TheNoah.CSEngine{
       scene.AddModel(cube);
     }
 
-    private void KeyPress(Keys key, int scancode, InputState action, ModifierKeys mods){
-      if(action != InputState.Press){
+    private void KeyPress(Key key, int scancode, State action, KeyModifier mods){
+      if(action != State.Press){
         return;
       }
 
       switch(key){
-        case Keys.Escape:
+        case Key.Escape:
           window.ShouldClose = true; break;
-        case Keys.F1:
+        case Key.F1:
           window.Fullscreen = !window.Fullscreen; break;
-        case Keys.F2:
+        case Key.F2:
           TakeScreenshot(); break;
-        case Keys.F3:
+        case Key.F3:
           wireframe = !wireframe;
           Gl.PolygonMode(MaterialFace.FrontAndBack, wireframe ? PolygonMode.Line : PolygonMode.Fill);
           break;
-        case Keys.F4:
+        case Key.F4:
           camera.Reset();
           break;
       }
